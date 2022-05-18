@@ -1,0 +1,113 @@
+<nav class="navbar navbar-light bg-dark " >
+    <a class="navbar-brand  " href="#" style="color:rgb(85, 98, 237);"><b>&#169; HAFC Bank Pvt.Ltd </b></a>
+    <span class="quote text-light">Giving you freedom...</span>
+    <button (click)="logout()" class="btn btn-warning">log out</button>
+    
+  </nav>
+
+  <h1 style="color: aqua;">welcome {{username}}</h1>
+  <h5 style="color: aqua;">{{date|date:'shortDate'}}</h5>
+  <a routerLink="/transaction">transaction history</a>
+<!-- animation -->
+  <!-- <app-animation></app-animation> -->
+
+  <button (click)="deleteFunction()" style="float: right;">delete</button>
+  <hr>
+  <!-- child select  -->
+ <app-delete (ondelete)="ondelete($event)" (oncancel)="oncancel()" [item]=accnumber></app-delete>
+
+  
+  <div [ngClass]="accnumber?  'style1':''" class="container col-md-12 mt-0">
+      <div class="d-flex justify-content-center h-100">
+          <div class="card">
+              <div class="card-header">
+                  <h3 appHighlighl class="text-center">deposit</h3>
+                  
+              </div>
+              <div  class="card-body">
+                  <form [formGroup]="depositForm" (ngSubmit)="deposit()">
+
+                      <div class="input-group form-group">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="fas fa-user"></i></span>
+                          </div>
+                          <input type="" name="accnumber" formControlName="accnumber" class="form-control" placeholder="accnumber" id="login_accno" required>
+                          
+                      </div>
+                      <div *ngIf="this.depositForm.get('accnumber')?.touched&&this.depositForm.get('accnumber')?.errors" style="text-align: center;color: red;" >invalid accnumber </div>
+
+                      <div class="input-group form-group">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="fas fa-key"></i></span>
+                          </div>
+                          <input type="password" name="password" formControlName="password" class="form-control" placeholder="password" id="login_password" required>
+                      </div>
+                      <div *ngIf="this.depositForm.get('password')?.touched&&this.depositForm.get('password')?.errors" style="text-align: center;color: red;" >invalid password </div>
+
+                      
+                      <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
+                        <input type="text" name="amount" formControlName="amount" class="form-control" placeholder="deposit_amount" id="login_amount" required>
+                        
+                    </div>
+                    <div *ngIf="this.depositForm.get('amount')?.touched&&this.depositForm.get('amount')?.errors" style="text-align: center;color: red;" >invalid amount </div>
+
+
+
+
+                      
+                      <div class="form-group">
+                          <input type="submit"  value="deposit" class="btn float-right login_btn " style="width:50%" >
+                      </div>
+                  </form>
+      </div>
+      <br><br><br>
+
+      <div [ngClass]="accnumber?  'style1':''" class="container col-md-12 mt-0">
+        <div class="d-flex justify-content-center h-100">
+            <div class="card">
+                <div class="card-header">
+                    <h3 appHighlighl class="text-center">withdraw</h3>
+                    
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="withdrawForm" (ngSubmit)="withdraw()">
+  
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            </div>
+                            <input type="" name="accnumber" formControlName="accnumber1" class="form-control" placeholder="accnumber" id="login_accno" required>
+                            
+                        </div>
+                        <div *ngIf="this.withdrawForm.get('accnumber1')?.touched&&this.withdrawForm.get('accnumber1')?.errors" style="text-align: center;color: red;" >invalid accnumber </div>
+
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                            </div>
+                            <input type="password" name="password" formControlName="password1" class="form-control" placeholder="password" id="login_password" required>
+                        </div>
+                        <div *ngIf="this.withdrawForm.get('password1')?.touched&&this.withdrawForm.get('password1')?.errors" style="text-align: center;color: red;" >invalid password </div>
+
+                        <div class="input-group form-group">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="fas fa-user"></i></span>
+                          </div>
+                          <input type="text" name="amount" formControlName="amount1" class="form-control" placeholder="deposit_amount" id="login_amount" required>
+                          
+                      </div>
+  
+                      <div *ngIf="this.withdrawForm.get('amount1')?.touched&&this.withdrawForm.get('amount1')?.errors" style="text-align: center;color: red;" >invalid amount </div>
+
+  
+                        
+                        <div class="form-group">
+                            <input type="submit"  value="withdraw" class="btn float-right login_btn " style="width:50%" >
+                        </div>
+                    </form>
+        </div>
+  
+  

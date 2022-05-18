@@ -1,0 +1,26 @@
+<div class="container">
+    
+        <div  class="a1">
+            <h1 style="text-align: center;" >Transaction History</h1>
+        
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>type</th>
+                    <th>amount</th>
+                </tr>
+                
+            </thead>
+            <tbody>
+                <tr *ngFor="let t of transaction">
+                    <td >{{t.type}}</td>
+                    <td>{{t.amount}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <a routerLink="/home">home</a>
+        </div>
+        
+    
+</div>
+
